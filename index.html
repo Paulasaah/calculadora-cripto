@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Criptográfica</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="ph-fill ph-calculator" style="color:var(--accent); font-size:1.5rem;"></i>
+            <span>Calculadora Criptográfica</span>
+        </div>
+
+        <button id="hamburger-btn" class="hamburger-btn">
+            <i class="ph ph-list"></i>
+        </button>
+
+        <div class="menu-container" id="main-menu">
+            <!-- Seccion 1: Modular -->
+            <div class="accordion-item">
+                <button class="accordion-btn"><i class="ph ph-math-operations"></i> Modular <i
+                        class="ph ph-caret-down arrow"></i></button>
+                <div class="accordion-content">
+                    <button class="menu-item" data-api="matematica" data-op="modulo">1.1 Módulo</button>
+                    <button class="menu-item" data-api="matematica" data-op="inv_aditivo">1.2 Inverso Aditivo</button>
+                    <button class="menu-item" data-api="matematica" data-op="xor">1.3 XOR binario</button>
+                    <button class="menu-item" data-api="matematica" data-op="mcd">1.4 MCD</button>
+                    <button class="menu-item" data-api="matematica" data-op="inv_tradicional">1.5 Inverso Trad.</button>
+                    <button class="menu-item" data-api="matematica" data-op="aee">1.6 Inverso AEE</button>
+                </div>
+            </div>
+
+            <!-- Seccion 2: Clasica -->
+            <div class="accordion-item">
+                <button class="accordion-btn"><i class="ph ph-scroll"></i> Clásica <i
+                        class="ph ph-caret-down arrow"></i></button>
+                <div class="accordion-content">
+                    <button class="menu-item" data-api="clasica" data-op="mod27">2.1 Módulo 27</button>
+                    <button class="menu-item" data-api="clasica" data-op="cesar">2.2 César</button>
+                    <button class="menu-item" data-api="clasica" data-op="vernam">2.3 Vernam</button>
+                    <button class="menu-item" data-api="clasica" data-op="atbash">2.4 ATBASH</button>
+                    <button class="menu-item" data-api="clasica" data-op="columnar">2.5 Transp. Columnar</button>
+                    <button class="menu-item" data-api="clasica" data-op="afin">2.6 Afín</button>
+                    <button class="menu-item" data-api="clasica" data-op="sustitucion">2.7 Sustitución Simple</button>
+                </div>
+            </div>
+
+            <!-- Seccion 3: Moderna -->
+            <div class="accordion-item">
+                <button class="accordion-btn"><i class="ph ph-lock-key"></i> Moderna <i
+                        class="ph ph-caret-down arrow"></i></button>
+                <div class="accordion-content">
+                    <button class="menu-item" data-api="moderna" data-op="dh">3.1 Diffie Hellman</button>
+                    <button class="menu-item" data-api="moderna" data-op="rsa">3.2 RSA (Simulación)</button>
+                    <button class="menu-item" data-api="moderna" data-op="exp_rapida">3.3 Exp. Rápida</button>
+                </div>
+            </div>
+
+            <!-- Seccion 4: Hash -->
+            <div class="accordion-item">
+                <button class="accordion-btn"><i class="ph ph-hash"></i> Hash <i
+                        class="ph ph-caret-down arrow"></i></button>
+                <div class="accordion-content">
+                    <button class="menu-item" data-api="hash" data-op="md5">4.1 Hash MD5</button>
+                    <button class="menu-item" data-api="hash" data-op="sha256">4.2 Hash SHA-256</button>
+                    <button class="menu-item" data-api="hash" data-op="sha512">4.3 Hash SHA-512</button>
+                </div>
+            </div>
+
+            <!-- Seccion 5: Codificacion -->
+            <div class="accordion-item">
+                <button class="accordion-btn"><i class="ph ph-code"></i> Codificación <i
+                        class="ph ph-caret-down arrow"></i></button>
+                <div class="accordion-content">
+                    <button class="menu-item" data-api="codificacion" data-op="ascii">5.1 ASCII</button>
+                    <button class="menu-item" data-api="codificacion" data-op="hexa">5.2 Hexadecimal</button>
+                    <button class="menu-item" data-api="codificacion" data-op="binario">5.3 Binario</button>
+                    <button class="menu-item" data-api="codificacion" data-op="base64">5.4 Base64</button>
+                </div>
+            </div>
+
+            <!-- Seccion 6: Salt -->
+            <div class="accordion-item">
+                <button class="accordion-btn"><i class="ph ph-shield-plus"></i> SALT <i
+                        class="ph ph-caret-down arrow"></i></button>
+                <div class="accordion-content">
+                    <button class="menu-item" data-api="salt" data-op="md5">6.1 MD5 + SALT</button>
+                    <button class="menu-item" data-api="salt" data-op="sha256">6.2 SHA-256 + SALT</button>
+                    <button class="menu-item" data-api="salt" data-op="sha512">6.3 SHA-512 + SALT</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content">
+        <header class="main-header">
+            <div>
+                <h1 id="header-title">Terminal Criptográfica</h1>
+                <p id="header-desc">Selecciona una operación en el menú superior para comenzar.</p>
+            </div>
+        </header>
+
+        <section class="card glass">
+            <div id="tab-content" class="dynamic-form">
+                <div class="empty-state">
+                    <i class="ph-duotone ph-terminal"
+                        style="font-size:3rem; color: var(--accent); margin-bottom: 1rem;"></i>
+                    <p>Esperando la selección de un módulo de operación...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="result-container" class="result-box glass" style="display: none;">
+            <div class="result-header">
+                <span><i class="ph-fill ph-terminal-window"></i> sys.stdout</span>
+            </div>
+            <pre id="output-text"></pre>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
