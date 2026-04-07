@@ -25,6 +25,7 @@ class CryptoRequest(BaseModel):
     # Claves
     clave_num: Optional[int] = 0
     clave_txt: Optional[str] = ""
+    clave_sustitucion: Optional[str] = ""
     salt: Optional[str] = ""
     # RSA
     p: Optional[int] = 0
@@ -256,7 +257,7 @@ async def handle_clasica(req: CryptoRequest):
             cifrado += n_c
         res = pasos + f"\nResultado Final:\n{cifrado}"
     elif req.op == "sustitucion":
-        clave = clean_text(req.clave_txt)
+        clave = clean_text(req.clave_sustitucion)
         if len(set(clave)) != TAM_ALFABETO:
             return {"resultado": "Error: La clave debe contener exactamente 27 letras únicas del abecedario (A-Z + Ñ)."}
         cifrado = ""
