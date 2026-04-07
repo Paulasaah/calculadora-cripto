@@ -15,7 +15,7 @@ const CONFIG = {
     atbash: { t: "Cifrado ATBASH", d: "Efecto espejo. Cambia la primera letra por la última (A -> Z, B -> Y).", bg: "clasica", in: ["texto"] },
     columnar: { t: "Transposición Columnar", d: "Reordenar. Mete el texto en una tabla por filas horizontales y luego envía el mensaje leyendo de arriba hacia abajo.", bg: "clasica", in: ["texto", "clave_num"] },
     afin: { t: "Cifrado Afín", d: "Ecuación matemática. Cifra con la función: Cifra = (Letra * A + B) dividido el abc (27).", bg: "clasica", in: ["texto", "a", "b"] },
-    sustitucion: { t: "Sustitución Pura", d: "Cambia tu alfabeto de A-Z por otro alfabeto totalmente desordenado que pases como llave.", bg: "clasica", in: ["texto", "clave_txt"] },
+    sustitucion: { t: "Sustitución Pura", d: "Cambia tu alfabeto de A-Z por otro alfabeto totalmente desordenado que pases como llave. (DEBE TENER EXACTAMENTE 27 LETRAS ÚNICAS).", bg: "clasica", in: ["texto", "clave_sustitucion"] },
 
     // 3. Moderna
     dh: { t: "Log. Discreto / Diffie-Hellman", d: "Generar clave remota. Eleva una 'Base' pública al exponente de tu 'Secreto Privado', y sácales el Módulo 'P'.", bg: "moderna", in: ["base", "a", "mod"] },
@@ -46,6 +46,7 @@ const TEMPLATES = {
     "texto": { label: "Data Stream [ T ]", type: "text", pl: "Escribe tu input..." },
     "clave_num": { label: "Valor Cifra [ K ]", type: "number", pl: "Ej: 3" },
     "clave_txt": { label: "Llave de Cifrado [ KEY ]", type: "text", pl: "Ej: SECRETA..." },
+    "clave_sustitucion": { label: "Alfabeto Clave [ 27 Únicas ]", type: "text", pl: "Ej: QWERTYUIOPASDFGHJKLÑZXCVBNM" },
     "base": { label: "Gen. Base [ G ]", type: "number", pl: "Ej: 2" },
     "exp": { label: "Exponencial [ EXP ]", type: "number", pl: "Ej: 90" },
     "mod": { label: "Módulo Primo [ P ]", type: "number", pl: "Ej. Primo grande" },

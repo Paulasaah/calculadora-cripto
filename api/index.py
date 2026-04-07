@@ -258,9 +258,9 @@ async def handle_clasica(req: CryptoRequest):
     elif req.op == "sustitucion":
         clave = clean_text(req.clave_txt)
         if len(set(clave)) != TAM_ALFABETO:
-            return {"resultado": "Error: La clave de sustitución no es un alfabeto válido."}
+            return {"resultado": "Error: La clave debe contener exactamente 27 letras únicas del abecedario (A-Z + Ñ)."}
         cifrado = ""
-        pasos = f"Paso a paso Sustitución:\nAlfabeto Base: {ALFABETO}\nAlfabeto Llave:{clave}\n\n"
+        pasos = f"Paso a paso Sustitución Pura:\nAlfabeto Base: {ALFABETO}\nAlfabeto Llave:{clave}\n\n"
         for c in txt:
             idx = ALFABETO.find(c)
             n_c = clave[idx]
